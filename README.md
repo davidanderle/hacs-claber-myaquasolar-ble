@@ -1,5 +1,8 @@
 # Claber myAquaSolar BLE Protocol — Reverse Engineering
 
+[![Tests](https://github.com/davidanderle/hacs-claber-myaquasolar-ble/actions/workflows/tests.yml/badge.svg)](https://github.com/davidanderle/hacs-claber-myaquasolar-ble/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Fully reverse-engineered BLE protocol for the **[Claber Dual myAquaSolar](https://www.easygardenirrigation.co.uk/products/claber-dual-myaquasolar-8498)** (cod. 8498) — a 2-channel solar-powered outdoor irrigation valve. No public documentation or HACS integration existed prior to this work.
 
 ---
