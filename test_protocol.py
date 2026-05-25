@@ -9,22 +9,22 @@ from claber_protocol import (
 
 
 def test_pin_validation():
-    assert validate_pin("2BDAE672D") is True
-    assert validate_pin("2BDAE672E") is True   # same digits, E suffix also valid
-    assert validate_pin("1BDAE672D") is False  # fails Luhn-16
+    assert validate_pin("00000000D") is True
+    assert validate_pin("00000000E") is True   # E suffix also valid
+    assert validate_pin("10000000D") is False  # fails Luhn-16
     assert validate_pin("SHORT") is False
-    assert validate_pin("2BDAE672X") is False  # invalid suffix
+    assert validate_pin("00000000X") is False  # invalid suffix
 
 
 def test_auth_packet_length():
-    pkt = build_auth_packet("2BDAE672D")
+    pkt = build_auth_packet("00000000D")
     assert len(pkt) == 15
     assert pkt[0] == 0x26
     assert pkt[1:4] == b'\x00\x01\x09'
 
 
 def test_auth_packet_seed_encoding():
-    pkt = build_auth_packet("2BDAE672D", seed=0xDA)
+    pkt = build_auth_packet("00000000D", seed=0xDA)
     assert (pkt[4] >> 4) == 0xD
     assert (pkt[5] >> 4) == 0xA
 
