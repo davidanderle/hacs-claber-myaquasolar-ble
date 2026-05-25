@@ -156,8 +156,6 @@ The BLE "company ID" field is **repurposed as data** (not a real Bluetooth SIG i
 | 1 – 4 | Poor | Very dark / dusk |
 | 0 | None | Night |
 
-Boundary confirmations: 4→Poor, 5→Sufficient, 6→Sufficient, 49→Sufficient, 50→Good, 137→Good, 150→Excellent.
-
 ### Battery Level (from status byte lower 5 bits)
 
 | Value | Label |
@@ -181,12 +179,6 @@ claber_ble_research/
 ├── valve_demo.py           ← Working demo: pair + control valves (L1/L2 cycle)
 ├── e2e_test.py             ← End-to-end test: auth + read status/energy
 ├── live_broadcast.py       ← Passive broadcast decoder (no connection needed)
-│
-├── btsnoop_hci.log         ← Captured Android HCI traffic (reference)
-├── myClaber.apk            ← Official app APK
-├── myClaber.xapk           ← Official app XAPK bundle
-├── claber_decompiled/      ← Decompiled app source (JADX)
-└── research_scripts/       ← Archived intermediate research scripts
 ```
 
 ---
