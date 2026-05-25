@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Research artifacts (kept locally, not published)
+research_scripts/
+btsnoop_hci.log
+
+# App binaries (too large / copyright)
+*.apk
+*.xapk
+
+# Decompiled source (copyright / large)
+claber_decompiled/
+
+# macOS
+.DS_Store
