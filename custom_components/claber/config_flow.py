@@ -5,9 +5,8 @@ from __future__ import annotations
 import logging
 
 import voluptuous as vol
-from homeassistant import config_entries
-from homeassistant.components import bluetooth
-from homeassistant.data_entry_flow import FlowResult
+from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
+from homeassistant.components.bluetooth import BluetoothServiceInfoBleak
 
 from .const import CONF_ADDRESS, CONF_PIN, DOMAIN
 from .protocol import CMD_STATUS, authenticate_and_send, validate_pin
@@ -31,7 +30,7 @@ def _entry_title(address: str) -> str:
     return f"Claber Sun-{suffix}"
 
 
-class ClaberConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class ClaberConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Claber devices."""
 
     VERSION = 1
@@ -42,8 +41,8 @@ class ClaberConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_bluetooth(
         self,
-        discovery_info: bluetooth.BluetoothServiceInfoBleak,
-    ) -> FlowResult:
+        discovery_info: BluetoothServiceInfoBleak,
+    ) -> ConfigFlowResult:
         """Handle Bluetooth discovery."""
         address = _normalize_address(discovery_info.address)
         await self.async_set_unique_id(address)
@@ -53,7 +52,7 @@ class ClaberConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self.context["title_placeholders"] = {"address": address}
         return await self.async_step_pin()
 
-    async def async_step_user(self, user_input: dict | None = None) -> FlowResult:
+    async def async_step_user(self, user_input: dict | None = None) -> ConfigFlowResult:
         """Handle manual setup."""
         errors: dict[str, str] = {}
 
@@ -79,7 +78,7 @@ class ClaberConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
         return self.async_show_form(step_id="user", data_schema=data_schema, errors=errors)
 
-    async def async_step_pin(self, user_input: dict | None = None) -> FlowResult:
+    async def async_step_pin(self, user_input: dict | None = None) -> ConfigFlowResult:
         """Handle PIN entry after Bluetooth discovery."""
         if self._address is None:
             return await self.async_step_user()

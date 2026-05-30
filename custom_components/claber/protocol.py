@@ -8,8 +8,9 @@ from collections.abc import Mapping
 from contextlib import suppress
 from dataclasses import dataclass
 
+from bleak import BleakClient
 from bleak.exc import BleakError
-from bleak_retry_connector import BleakClientWithServiceCache, establish_connection
+from bleak_retry_connector import establish_connection
 from homeassistant.components import bluetooth
 from homeassistant.core import HomeAssistant
 
@@ -239,7 +240,7 @@ def parse_broadcast(
 
 
 async def _write_and_wait_response(
-    client: BleakClientWithServiceCache,
+    client: BleakClient,
     notification_queue: asyncio.Queue[bytes],
     payload: bytes,
     timeout: float,
@@ -270,7 +271,7 @@ async def authenticate_and_send(
         raise BleakError(f"No connectable BLE device available for address {address}")
 
     client = await establish_connection(
-        BleakClientWithServiceCache,
+        BleakClient,
         ble_device,
         f"claber-{address}",
     )
