@@ -1,0 +1,22 @@
+{
+  "domain": "claber",
+  "name": "Claber myAquaSolar",
+  "bluetooth": [
+    {
+      "local_name": "Claber Sun-*",
+      "service_uuid": "00ff2c23-2f17-198c-e343-3ca6fe3ceebb"
+    }
+  ],
+  "codeowners": [
+    "@anderle"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/anderle/claber_ble_research",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "loggers": [
+    "custom_components.claber"
+  ],
+  "requirements": [],
+  "version": "0.1.0"
+}

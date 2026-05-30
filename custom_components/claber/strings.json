@@ -1,0 +1,69 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Claber myAquaSolar",
+        "description": "Enter your valve Bluetooth address and the 9-character product PIN.",
+        "data": {
+          "address": "Bluetooth address",
+          "pin": "PIN"
+        }
+      },
+      "pin": {
+        "title": "Pair Claber valve",
+        "description": "Enter the 9-character product PIN for {address}.",
+        "data": {
+          "pin": "PIN"
+        }
+      }
+    },
+    "error": {
+      "invalid_pin": "PIN format is invalid.",
+      "cannot_connect": "Cannot connect to the valve over Bluetooth.",
+      "auth_failed": "Authentication failed. Check the PIN and try again."
+    },
+    "abort": {
+      "already_configured": "This Claber valve is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "battery": {
+        "name": "Battery"
+      },
+      "solar_irradiance": {
+        "name": "Sun irradiance"
+      },
+      "solar_irradiance_level": {
+        "name": "Sun irradiance level"
+      },
+      "rssi": {
+        "name": "Signal quality"
+      }
+    },
+    "binary_sensor": {
+      "rain": {
+        "name": "Rain"
+      },
+      "is_watering": {
+        "name": "Is watering"
+      }
+    },
+    "number": {
+      "valve_1_duration": {
+        "name": "Valve 1 duration"
+      },
+      "valve_2_duration": {
+        "name": "Valve 2 duration"
+      }
+    },
+    "switch": {
+      "valve_1": {
+        "name": "Valve 1"
+      },
+      "valve_2": {
+        "name": "Valve 2"
+      }
+    }
+  }
+}
